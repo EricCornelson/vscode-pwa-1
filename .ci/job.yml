@@ -13,6 +13,12 @@ jobs:
       versionSpec: 12.13.0
       checkLatest: true
 
+  - bash: |
+    /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    echo ">>> Started xvfb"
+  displayName: Start xvfb
+  condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
+
   - task: Npm@1
     displayName: npm install
     inputs:
@@ -30,6 +36,8 @@ jobs:
       command: custom
       verbose: false
       customCommand: test
+    env:
+      DISPLAY: ':99.0'
 
   # - task: Gulp@0
   #   displayName: gulp lint
