@@ -21,7 +21,7 @@ jobs:
   - task: Gulp@0
     displayName: gulp compile
     inputs:
-      targets: build
+      targets: compile
       publishJUnitResults: true
 
   - task: Npm@1
