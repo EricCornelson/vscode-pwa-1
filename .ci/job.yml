@@ -1,0 +1,37 @@
+parameters:
+  name: ''
+  vmImage: ''
+
+jobs:
+- job: ${{ parameters.name }}
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+  steps:
+  - task: NodeTool@0
+    displayName: Use Node
+    inputs:
+      versionSpec: 12.13.0
+      checkLatest: true
+
+  - task: Npm@1
+    displayName: npm install
+    inputs:
+      verbose: false
+
+  - task: Gulp@0
+    displayName: gulp compile
+    inputs:
+      targets: build
+      publishJUnitResults: true
+
+  - task: Npm@1
+    displayName: npm test
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: test
+
+  # - task: Gulp@0
+  #   displayName: gulp lint
+  #   inputs:
+  #     targets: lint
