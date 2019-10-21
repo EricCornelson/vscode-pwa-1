@@ -36,6 +36,7 @@ jobs:
       command: custom
       verbose: false
       customCommand: test
+    continueOnError: true
     env:
       DISPLAY: ':99.0'
 
