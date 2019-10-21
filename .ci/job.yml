@@ -40,7 +40,7 @@ jobs:
     env:
       DISPLAY: ':99.0'
 
-  # - task: Gulp@0
-  #   displayName: gulp lint
-  #   inputs:
-  #     targets: lint
+  - task: Gulp@0
+    displayName: gulp lint
+    inputs:
+      targets: lint
