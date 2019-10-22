@@ -30,15 +30,15 @@ jobs:
       targets: compile
       publishJUnitResults: true
 
-  - task: Npm@1
-    displayName: npm test
-    inputs:
-      command: custom
-      verbose: false
-      customCommand: test
-    continueOnError: true
-    env:
-      DISPLAY: ':99.0'
+  # - task: Npm@1
+  #   displayName: npm test
+  #   inputs:
+  #     command: custom
+  #     verbose: false
+  #     customCommand: test
+  #   continueOnError: true
+  #   env:
+  #     DISPLAY: ':99.0'
 
   - task: Gulp@0
     displayName: gulp lint
